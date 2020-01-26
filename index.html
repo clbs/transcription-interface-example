@@ -1,0 +1,48 @@
+
+<!doctype html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="./javascript/transcription_service.js"></script>
+    <script src="./javascript/transcription_controller.js"></script>
+    
+  </head>
+  <body ng-app="transcriptionApp">
+    <h2>Transcription</h2>
+    <div ng-controller="transcriptionController">
+        all the transcription data being returned from transcription_service.js: <br/> {{transcriptionData}} <br/>
+        position of selected array item: {{selectedResultIndex}} <br/>
+        <button ng-click="nextResult();">
+            go to the next item
+        </button> <br/>
+        <button ng-click="previousResult();">
+            go back to the previous item
+        </button> <br/>
+        {{ selectedItem }}
+        <br/>
+        <img src="{{ selectedItem.image }}" /><br/>
+        detail: {{ selectedItem.detail }}<br/>
+        text: {{ selectedItem.text }}<br/>
+        from user: {{ selectedItem.user }}<br/>
+        created at: {{ selectedItem.created_at }}<br/>
+    
+
+
+            
+            <label>Transcription: <textarea rows="10" cols="30" ng-model="transForm.text"></textarea></label><br />
+            <label>Description: <input type="text" ng-model="transForm.description" /></label><br />
+            <label>Date: <input type="date" id="exampleInput" name="input" ng-model="transForm.date"
+                placeholder="yyyy-MM-dd" min="1850-01-01" /></label><br />
+
+            
+            <br/>
+            text: {{ transForm.text }}<br/>
+            description: {{ transForm.description }}<br/>
+            date: {{ transForm.date }}<br/>
+
+        
+        <button ng-click="submitTranscription();">save</button>
+        <button ng-click="clearTranscriptionForm();">clear</button>
+    </div>
+  </body>
